@@ -80,19 +80,19 @@
     margin-top: 20px;
   }
   .hero-area-bg {
-  background: url(../img/hero-area-sm.jpg) no-repeat;
+  background: url(../img/experiences/THP/banner.jpg) no-repeat;
   background-size: cover;
   }
   .hero-area-thp {
-  background: url(../img/infographic/banner.jpg) no-repeat;
+  background: url(../img/experiences/THP/banner.jpg) no-repeat;
   background-size: cover;
   }
   .hero-area-reap {
-  background: url(../img/experiences/reap/banner.png) no-repeat;
+  background: url(../img/experiences/THP/banner.jpg) no-repeat;
   background-size: cover;
   }
   .hero-area-tc {
-  background: url(../img/experiences/TC/banner.png) no-repeat;
+  background: url(../img/experiences/THP/banner.jpg) no-repeat;
   background-size: cover;
   }
 
@@ -102,19 +102,19 @@
 @media (max-width: 571px) {
 
   .hero-area-bg {
-  background: url(../img/hero-area-xsm.jpg) no-repeat;
+  background: url(../img/experiences/THP/banner.jpg) no-repeat;
   background-size: cover;
   }
   .hero-area-thp {
-  background: url(../img/experiences/THP/banner2.png) no-repeat;
+  background: url(../img/experiences/THP/banner.jpg) no-repeat;
   background-size: cover;
   }
   .hero-area-reap {
-  background: url(../img/experiences/reap/banner.png) no-repeat;
+  background: url(../img/experiences/THP/banner.jpg) no-repeat;
   background-size: cover;
   }
   .hero-area-tc {
-  background: url(../img/experiences/TC/banner.png) no-repeat;
+  background: url(../img/experiences/THP/banner.jpg) no-repeat;
   background-size: cover;
   }
 }
