@@ -26,81 +26,6 @@
     <!-- Responsive Style -->
     <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
 
-
-    <style>
-      div#test{ border:#5AB029 3px solid; padding:10px 40px 40px 40px; background-color:#E5FCE3; width:100%;}
-      div#test h3{
-        font-size: 18px;
-      }
-      div#test h2{
-        font-size: 14px;
-      }
-    </style>
-<script type="text/javascript">
-// pos is position of where the user in the test or which question they're up to
-var pos = 0, test, test_status, question, choice, choices, chA, chB, chC, chD, correct = 0;
-// this is a multidimensional array with 4 inner array elements with 5 elements inside them
-// if you don't want answers viewable in the code, then you should use PHP and mySQL database
-var questions = [
-  ["What does SQL stand for?", "i. Structured Query Language", "ii. Seekwel", "iii. Snow Queen Lives", "iv. Statement Query Language", "A"],
-  ["Is not a RDBMSs :", "i. MySQL", "ii. PostgreSQL", "iii. SQLite", "iv. SQL", "D"],
-  ["What does SQL NOT do", "i. Create data", "ii. Manage Data", "iii. Query Data", "iv. Predict Data", "D"]
-  ];
-// this get function is short for the getElementById function  
-function get(x){
-  return document.getElementById(x);
-}
-function renderQuestion(){
-  test = get("test");
-  if(pos >= questions.length){
-    test.innerHTML = "<p>You got "+correct+" of "+questions.length+" questions correct<p>";
-    test.innerHTML += "<button onclick='reStart()'>Restart</button>"+"<br>";
-    get("test_status").innerHTML = "<h2>Question 1 Completed</h2>";
-    // resets the variable to allow users to restart the test
-    pos = 0;
-    correct = 0;
-    // stops rest of renderQuestion function running when test is completed
-    return false;
-  }
-  question = questions[pos][0];
-  chA = questions[pos][1];
-  chB = questions[pos][2];
-  chC = questions[pos][3];
-  chD = questions[pos][4];
-  test.innerHTML = "<h3>"+question+"</h3>";
-  // the += appends to the data we started on the line above
-  test.innerHTML += "<input type='radio' name='choices' value='A'> "+chA+"<br>";
-  test.innerHTML += "<input type='radio' name='choices' value='B'> "+chB+"<br>";
-  test.innerHTML += "<input type='radio' name='choices' value='C'> "+chC+"<br>";
-  test.innerHTML += "<input type='radio' name='choices' value='D'> "+chD+"<br><br>";
-  test.innerHTML += "<button onclick='checkAnswer()'>Submit Answer</button>"+"&nbsp";
-  test.innerHTML += "<button onclick='reStart()'>Restart</button>"+"<br>";
-
-}
-function checkAnswer(){
-  // use getElementsByName because we have an array which it will loop through
-  choices = document.getElementsByName("choices");
-  for(var i=0; i<choices.length; i++){
-    if(choices[i].checked){
-      choice = choices[i].value;
-    }
-  }
-  // checks if answer matches the correct choice
-  if(choice == questions[pos][5]){
-    //each time there is a correct answer this value increases
-    correct++;
-  }
-  // changes position of which character user is on
-  pos++;
-  // then the renderQuestion function runs again to go to next question
-  renderQuestion();
-}
-function reStart(){
-  window.location.reload();
-}
-window.addEventListener("load", renderQuestion, false);
-</script>
-
   </head>
   <body>
     
@@ -165,7 +90,7 @@ window.addEventListener("load", renderQuestion, false);
               <div class="col-md-12 col-sm-12 text-center">
                 <div class="contentssm"> 
                   <br>
-                  <h2 class="head-title wow fadeInUp" data-wow-delay="0.4s">Quizzes</h2>               
+                  <h2 class="head-title wow fadeInUp" data-wow-delay="0.4s">Answer Keys</h2>               
                   <p class="wow fadeInUp" data-wow-delay="0.6s">
                     CS 330 - Management Information Systems
                   </p>
@@ -179,31 +104,55 @@ window.addEventListener("load", renderQuestion, false);
       </header>
       <!-- Header Area wrapper End -->
 
-
        <!-- About Section Start -->
       <section id="" style="padding-top: 8px;">
         <div class="container">
           <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div class="profile-wrapper wow fadeInRight" data-wow-delay="0.3s">
-                  <p style="font-size-size: 24px;">Question 1: </p>
+                <center>
+                  <h4 style="font-size-size: 24px;">Understanding CPUs Quiz</h4>
+                  <br>
                   
+                </center>
+
                 <div class="container">
-                 
-                  <h2 stlye="font-size:14px;" id="test_status"></h2>
-                  <div id="test"></div>
+
+                  <p> 1. Multiple choice questions: 
+                  <ul style="margin-left: 10px;">
+                    
+                   <li>a.  What does SQL stand for? </li>
+                    <ul style="margin-left: 10px;"> 
+                      <li> i. Structured Query Language</li>
+                    </ul>
                   
+                  <li>b.  Is not a RDBMSs :</li>
+                    <ul style="margin-left: 10px;">
+                      <li> iv. SQL</li>
+                    </ul>
                   
-                <br>
-                <p>2. In your own words summarize the difference between an INNER JOIN and a LEFT JOIN.</p>
-                <br>
-                <p>3. What is the correct JOIN statement to display the table in the "SQL JOINS" section displaying the OrderID and SupplierID? (For bonus points provide the complete query)</p>
-                <br>
-                <p>4. Imagine you had two tables one containing information about music albums and another containing information about music singles. The music albums table contains the following columns: AlbumID, AlbumLength, and AlbumArtist. The music singles table contains the following columns: "SingleID, SingleTitle, AlbumID, and SingleArtist. If your colleague wanted to see if you tend to listen to complete albums or not which JOIN would you use to show them that you do or you do not and why?</p>
-                <br>
-                <p> 5. After reading the infographic, what is your opinion of it? Do you think it is effective?</p>
-                <br>
-                <p> 6. Draw a sketch of an infographic of showing scenario wheren one might use an INNER JOIN or LEFT JOIN that connect three or more tables.</p>
+                  <li>c.  What does SQL NOT do</li>
+                    <ul style="margin-left: 10px;">
+                      <li> iv. Predict Data</li>
+                    </ul>
+                </ul>
+                </p>
+                  <br>
+                  <p>2. INNER JIONs return records that have matching values in both tables where LEFT JOINs return all records from the left table and matched records from the right.</p>
+                  <br>
+                  <p>3. INNER JOIN </p>
+                  <p>Bonus points:</p>
+                  <p>SELECT OrderDetails.OrderID, Products.SupplierID </p>
+                  <p>FROM OrderDetails</p>
+                  <p>INNER JOIN Products</p>
+                  <p>ON OrderDetails.ProductID = Products.ProductID;</p>
+
+                  <br>
+                  <p>4. I would use a LEFT JOIN where the music singles table is on the left to display all the singles. If a single is not associated with an album the AlbumID column would be null. By showing my colleage the null items they would know if a lot of the songs are singles or from an album.</p>
+                  <br>
+                  <p>5. There are many possible answers </p>
+                  <br>
+                  <p>6. There are many possible answers </p>
               </div>
 
                 </div>
@@ -213,14 +162,15 @@ window.addEventListener("load", renderQuestion, false);
                     <div class="col-md-12">
                       <div class="footer-text text-center">
                         <div class="footer-text text-center">
-                          <a href="index.html">Full Size Infgraphic |</a>
-                          <a href="answer.html"> Answer Key</a>
+                          <a href="index.html">Understanding CPUs Infographic |</a>
+                          <a href="quiz.html">Understanding CPUs Quiz</a>
                         </div>
                       </div>  
                     </div>
                   </div>
                 </div>
-                <br>                
+
+                <br>             
 
               </div>
             </div>   
