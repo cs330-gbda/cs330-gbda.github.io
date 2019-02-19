@@ -26,6 +26,81 @@
     <!-- Responsive Style -->
     <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
 
+
+    <style>
+      div#test{ border:#5AB029 3px solid; padding:10px 40px 40px 40px; background-color:#E5FCE3; width:100%;}
+      div#test h3{
+        font-size: 18px;
+      }
+      div#test h2{
+        font-size: 14px;
+      }
+    </style>
+<script type="text/javascript">
+// pos is position of where the user in the test or which question they're up to
+var pos = 0, test, test_status, question, choice, choices, chA, chB, chC, chD, correct = 0;
+// this is a multidimensional array with 4 inner array elements with 5 elements inside them
+// if you don't want answers viewable in the code, then you should use PHP and mySQL database
+var questions = [
+  ["What does CPU stand for?", "i. Central Processing Unit", "ii. Control Programming Unit", "iii. Caterpillars Penguins Unicorns", "iv. Control Processing Unit", "A"],
+  ["A CPU is not known as a", "i. Processor", "ii. Microprocessor", "iii. Computer processor", "iv. GPU", "D"],
+  ["What does a CPU NOT do", "i. Fetch input instructions", "ii. Perform arthimetic and logic operations", "iii. Stores the processed data back to memory", "iv. Stores your files", "D"]
+  ];
+// this get function is short for the getElementById function  
+function get(x){
+  return document.getElementById(x);
+}
+function renderQuestion(){
+  test = get("test");
+  if(pos >= questions.length){
+    test.innerHTML = "<p>You got "+correct+" of "+questions.length+" questions correct<p>";
+    test.innerHTML += "<button onclick='reStart()'>Restart</button>"+"<br>";
+    get("test_status").innerHTML = "<h2>Question 1 Completed</h2>";
+    // resets the variable to allow users to restart the test
+    pos = 0;
+    correct = 0;
+    // stops rest of renderQuestion function running when test is completed
+    return false;
+  }
+  question = questions[pos][0];
+  chA = questions[pos][1];
+  chB = questions[pos][2];
+  chC = questions[pos][3];
+  chD = questions[pos][4];
+  test.innerHTML = "<h3>"+question+"</h3>";
+  // the += appends to the data we started on the line above
+  test.innerHTML += "<input type='radio' name='choices' value='A'> "+chA+"<br>";
+  test.innerHTML += "<input type='radio' name='choices' value='B'> "+chB+"<br>";
+  test.innerHTML += "<input type='radio' name='choices' value='C'> "+chC+"<br>";
+  test.innerHTML += "<input type='radio' name='choices' value='D'> "+chD+"<br><br>";
+  test.innerHTML += "<button onclick='checkAnswer()'>Submit Answer</button>"+"&nbsp";
+  test.innerHTML += "<button onclick='reStart()'>Restart</button>"+"<br>";
+
+}
+function checkAnswer(){
+  // use getElementsByName because we have an array which it will loop through
+  choices = document.getElementsByName("choices");
+  for(var i=0; i<choices.length; i++){
+    if(choices[i].checked){
+      choice = choices[i].value;
+    }
+  }
+  // checks if answer matches the correct choice
+  if(choice == questions[pos][5]){
+    //each time there is a correct answer this value increases
+    correct++;
+  }
+  // changes position of which character user is on
+  pos++;
+  // then the renderQuestion function runs again to go to next question
+  renderQuestion();
+}
+function reStart(){
+  window.location.reload();
+}
+window.addEventListener("load", renderQuestion, false);
+</script>
+
   </head>
   <body>
     
@@ -104,43 +179,57 @@
       </header>
       <!-- Header Area wrapper End -->
 
-      <!-- Infographics Section Start -->
-    <section id="services" class="services section-padding">
-      <div class="container">
-        <div class="row">
-          <!-- Infographic item -->
-          <a href="CPU-quiz.html">
-            <div class="col-md-6 col-lg-6 col-xs-6">
-              <div class="services-item wow fadeInDown" data-wow-delay="0.3s">
-                <div class="icon">
-                  <img src="assets/img/ux-dev.jpg" href="CPU-quiz.html">
-                </div>
-                <div class="services-content">
-                  <h3><a href="CPU-quiz.html">Understanding CPUs</a></h3>
-                  <p>Quiz</p>
-                </div>
+
+       <!-- About Section Start -->
+      <section id="" style="padding-top: 8px;">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="profile-wrapper wow fadeInRight" data-wow-delay="0.3s">
+                  <p style="font-size-size: 24px;">Question 1: </p>
+                  
+                <div class="container">
+                 
+                  <h2 stlye="font-size:14px;" id="test_status"></h2>
+                  <div id="test"></div>
+                  
+                  
+                <br>
+                <p>2. In your own words summarize some of the ways that processing power can be determined by.</p>
+                <br>
+                <p> 3. If a 1 GHz processor performs 1,000,000,000 clock cycles per second, how many clock cycles per second would a 5 GHz processor perform?</p>
+                <br>
+                <p>4. If you had to buy a PC today, would you purchase one with a single-core CPU or a multi-core CPU (ex: Intel Core i7)? Why?</p>
+                <br>
+                <p> 5. After reading the infographic, what is your opinion of it? Do you think it is effective?</p>
+                <br>
+                <p> 6. Draw a sketch of an infographic of dynamic frequency scaling briefly explaining what it is and why it is useful.</p>
               </div>
-            </div>
-          </a>
-          <!-- Infographic item -->
-          <a href="SQLs-quiz.html">
-            <div class="col-md-6 col-lg-6 col-xs-6">
-              <div class="services-item wow fadeInDown" data-wow-delay="0.3s">
-                <div class="icon">
-                  <img src="assets/img/iconstrategy.jpg" href="SQLs-quiz.html">
+
                 </div>
-                <div class="services-content">
-                  <h3><a href="SQLs-quiz.html">SQL JOINs</a></h3>
-                  <p>Quiz</p>
+
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="footer-text text-center">
+                        <div class="footer-text text-center">
+                          <a href="index.html">Full Size Infgraphic |</a>
+                          <a href="answer.html"> Answer Key</a>
+                        </div>
+                      </div>  
+                    </div>
+                  </div>
                 </div>
+                <br>                
+
               </div>
-            </div>
-          </a>
-          <!-- Infographic item -->
+            </div>   
+          </div>
         </div>
-      </div>
-    </section>
-    <!-- Experiences Section End -->    
+      </section>
+      <!-- About Section End -->
+
+   
 
       
       <!-- Footer Section Start -->
