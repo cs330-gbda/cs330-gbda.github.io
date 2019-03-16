@@ -42,9 +42,9 @@ var pos = 0, test, test_status, question, choice, choices, chA, chB, chC, chD, c
 // this is a multidimensional array with 4 inner array elements with 5 elements inside them
 // if you don't want answers viewable in the code, then you should use PHP and mySQL database
 var questions = [
-  ["What does SQL stand for?", "i. Structured Query Language", "ii. Seekwel", "iii. Snow Queen Lives", "iv. Statement Query Language", "A"],
-  ["Is not a RDBMSs :", "i. MySQL", "ii. PostgreSQL", "iii. SQLite", "iv. SQL", "D"],
-  ["What does SQL NOT do", "i. Create data", "ii. Manage Data", "iii. Query Data", "iv. Predict Data", "D"]
+  ["Which layer is the Address Resolution Protocol in?", "i. Layer 2, the Internet Layer", "ii. Layer 1, the Network Interface Layer", "iii. Layer 4, the Application Layer", "iv. All the above", "A"],
+  ["Which layer is the User Datagram Protocol in?", "i. Layer 2, the Internet Layer", "ii. Layer 1, the Network Interface Layer", "iii. None of the layers", "iv. Layer 3, the Transport Layer", "D"],
+  ["Which layer includes network mediums such as Ethernet?", "i. Layer 4, the Application Layer", "ii. Layer 2, the Internet Layer", "iii. Layer 3, the Transport Layer", "iv. Layer 1, the Network Interface Layer", "D"]
   ];
 // this get function is short for the getElementById function  
 function get(x){
@@ -195,15 +195,15 @@ window.addEventListener("load", renderQuestion, false);
                   
                   
                 <br>
-                <p>2. In your own words summarize the difference between an INNER JOIN and a LEFT JOIN.</p>
+                <p>2. In your own words summarize the overall TCP/IP Model. (Max: 7 sentences)</p>
                 <br>
-                <p>3. What is the correct JOIN statement to display the table in the "SQL JOINS" section displaying the OrderID and SupplierID? (For bonus points provide the complete query)</p>
+                <p>3.What are some differences between the TCP/IP Model and the OSI Model? When would you use each model?</p>
                 <br>
-                <p>4. Imagine you had two tables one containing information about music albums and another containing information about music singles. The music albums table contains the following columns: AlbumID, AlbumLength, and AlbumArtist. The music singles table contains the following columns: "SingleID, SingleTitle, AlbumID, and SingleArtist. If your colleague wanted to see if you tend to listen to complete albums or not which JOIN would you use to show them that you do or you do not and why?</p>
+                <p>4. analyze a situation where they have a choice on which layer of the model would provide protocols that should be used in a given situation</p>
                 <br>
                 <p> 5. After reading the infographic, what is your opinion of it? Do you think it is effective?</p>
                 <br>
-                <p> 6. Draw a sketch of an infographic of showing scenario wheren one might use an INNER JOIN or LEFT JOIN that connect three or more tables.</p>
+                <p> 6. Draw a sketch of an infographic that compares how and when we might use the TCP/IP Model vs the OSI Model.</p>
               </div>
 
                 </div>
@@ -213,8 +213,8 @@ window.addEventListener("load", renderQuestion, false);
                     <div class="col-md-12">
                       <div class="footer-text text-center">
                         <div class="footer-text text-center">
-                          <a href="index.html">Full Size Infgraphic |</a>
-                          <a href="answer.html"> Answer Key</a>
+                          <a href="TCP.html">Full Size Infgraphic |</a>
+                          <a href="TCP-answer.html"> Answer Key</a>
                         </div>
                       </div>  
                     </div>
