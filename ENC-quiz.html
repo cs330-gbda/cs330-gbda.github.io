@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>TCP/IP-Model-infographic</title>
+    <title>infographic</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" >
@@ -26,40 +26,80 @@
     <!-- Responsive Style -->
     <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
 
-    <style type="text/css">
-      a {
-        text-decoration: none;
-        display: inline-block;
-        padding: 5px 12px;
-      }
 
-      a:hover {
-        background-color: #ddd;
-        color: black;
+    <style>
+      div#test{ border:#5AB029 3px solid; padding:10px 40px 40px 40px; background-color:#E5FCE3; width:100%;}
+      div#test h3{
+        font-size: 18px;
       }
-
-      .previous {
-        background-color: #f1f1f1;
-        color: black;
-      }
-
-      .next {
-        background-color: #4CAF50;
-        color: white;
-      }
-
-      .round {
-        border-radius: 20%;
-      }
-
-      .alignleft {
-        float: left;
-      }
-
-      .alignright {
-        float: right;
+      div#test h2{
+        font-size: 14px;
       }
     </style>
+<script type="text/javascript">
+// pos is position of where the user in the test or which question they're up to
+var pos = 0, test, test_status, question, choice, choices, chA, chB, chC, chD, correct = 0;
+// this is a multidimensional array with 4 inner array elements with 5 elements inside them
+// if you don't want answers viewable in the code, then you should use PHP and mySQL database
+var questions = [
+  ["What is ciphertext?", "i. Encrypted data", "ii. Unencrypted data", "iii. Code", "iv. All the above", "A"],
+  ["What is plaintext?", "i. Encrypted data", "ii. Code", "iii. Hand writting", "iv. Unencrypted data", "D"],
+  ["What is decryption?", "i. Breaking a message", "ii. Ciphertext", "iii. Rendering a message unreadable", "iv. Retrieving the original message", "D"]
+  ];
+// this get function is short for the getElementById function  
+function get(x){
+  return document.getElementById(x);
+}
+function renderQuestion(){
+  test = get("test");
+  if(pos >= questions.length){
+    test.innerHTML = "<p>You got "+correct+" of "+questions.length+" questions correct<p>";
+    test.innerHTML += "<button onclick='reStart()'>Restart</button>"+"<br>";
+    get("test_status").innerHTML = "<h2>Question 1 Completed</h2>";
+    // resets the variable to allow users to restart the test
+    pos = 0;
+    correct = 0;
+    // stops rest of renderQuestion function running when test is completed
+    return false;
+  }
+  question = questions[pos][0];
+  chA = questions[pos][1];
+  chB = questions[pos][2];
+  chC = questions[pos][3];
+  chD = questions[pos][4];
+  test.innerHTML = "<h3>"+question+"</h3>";
+  // the += appends to the data we started on the line above
+  test.innerHTML += "<input type='radio' name='choices' value='A'> "+chA+"<br>";
+  test.innerHTML += "<input type='radio' name='choices' value='B'> "+chB+"<br>";
+  test.innerHTML += "<input type='radio' name='choices' value='C'> "+chC+"<br>";
+  test.innerHTML += "<input type='radio' name='choices' value='D'> "+chD+"<br><br>";
+  test.innerHTML += "<button onclick='checkAnswer()'>Submit Answer</button>"+"&nbsp";
+  test.innerHTML += "<button onclick='reStart()'>Restart</button>"+"<br>";
+
+}
+function checkAnswer(){
+  // use getElementsByName because we have an array which it will loop through
+  choices = document.getElementsByName("choices");
+  for(var i=0; i<choices.length; i++){
+    if(choices[i].checked){
+      choice = choices[i].value;
+    }
+  }
+  // checks if answer matches the correct choice
+  if(choice == questions[pos][5]){
+    //each time there is a correct answer this value increases
+    correct++;
+  }
+  // changes position of which character user is on
+  pos++;
+  // then the renderQuestion function runs again to go to next question
+  renderQuestion();
+}
+function reStart(){
+  window.location.reload();
+}
+window.addEventListener("load", renderQuestion, false);
+</script>
 
   </head>
   <body>
@@ -125,7 +165,7 @@
               <div class="col-md-12 col-sm-12 text-center">
                 <div class="contentssm"> 
                   <br>
-                  <h2 class="head-title wow fadeInUp" data-wow-delay="0.4s">Understanding the TCP/IP Model</h2>               
+                  <h2 class="head-title wow fadeInUp" data-wow-delay="0.4s">Introduction to Encryption Quiz</h2>               
                   <p class="wow fadeInUp" data-wow-delay="0.6s">
                     CS 330 - Management Information Systems
                   </p>
@@ -146,59 +186,45 @@
           <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div class="profile-wrapper wow fadeInRight" data-wow-delay="0.3s">
-                <center>
-                  <img style="width: 95%;" src="assets/img/infographic/3_three.png">
-                  <br>
-                  Note: to view full size, right click on image to view in a new window.
-                  <br>
-                  Learn more about ping and tracert: <a href="https://www.netgains.org/blog/how-to-do-ping-and-traceroute-for-windows-and-mac/">https://www.netgains.org/blog/how-to-do-ping-and-traceroute-for-windows-and-mac/</a> 
-                </center>
-
+                  <p style="font-size-size: 24px;">Question 1 </p>
+                  
+                <div class="container">
+                 
+                  <h2 stlye="font-size:14px;" id="test_status"></h2>
+                  <div id="test"></div>
+                  
                 <br>
+                <p>Question 2</p>
+                <p>In your own words summarize computationally secure. (Max: 5 sentences)</p>
+                <br>
+                <p>Question 3</p>
+                <p>Imagine you are working at your internship, create a scenario where encryption would be necessary in your office.</p>
+                <br>
+                <p>Question 4</p>
+                <p>Suppose that a text message is encrypted. Method 1 uses Triple DSE which works with a 56 bit key size to encrypt the data. Method 2 uses Blowfish which works with a 64 bit block length and vriable key size, ranging between 32 bits to 448 bit. Which one is more secure and why? (Learn more here: <a href="https://www.rankred.com/common-encryption-techniques/" target="_blank">https://www.rankred.com/common-encryption-techniques/</a>)</p>
+                <br>
+                <p>Question 5</p> 
+                <p>After reading the infographic, what is your opinion of it? Do you think it is effective?</p>
+                <br>
+                <p>Question 6</p> 
+                <p>Draw a sketch of an infographic that explains why encryption is important using a real world example not listed in the infographic.</p>
+              </div>
 
-                <div id="textbox">
-                  <p class="alignleft"><a href="TCP-two.html" class="previous round">Previous</a></p>
-                  <p class="alignright"><a href="TCP-four.html" class="next round">Next</a></p>
-                  <div style="clear: both;"></div>
                 </div>
-                                
-
-                <br>
-
 
                 <div class="container">
                   <div class="row">
                     <div class="col-md-12">
                       <div class="footer-text text-center">
                         <div class="footer-text text-center">
-                          <a href="TCP.html"> Full Infographic</a> |
-                          <a href="TCP-one.html"> Why is it Important?</a> |
-                          <a href="TCP-two.html"> Layer 4 - Application Layer</a> |
-                          <a href="TCP-four.html"> Layer 2 - Internet Layer</a> |
-                           <a href="TCP-five.html"> Layer 1 - Network Interface Layer </a>
+                          <a href="TCP.html">Full Size Infgraphic |</a>
+                          <a href="TCP-answer.html"> Answer Key</a>
                         </div>
                       </div>  
                     </div>
                   </div>
                 </div>
-
-                <br>
-
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="footer-text text-center">
-                        <div class="footer-text text-center">
-                          <a href="TCP-quiz.html">TCP/IP Model Quiz</a> |
-                          <a href="TCP-answer.html">TCP/IP Model Answer Key</a>
-                        </div>
-                      </div>  
-                    </div>
-                  </div>
-                </div>
-
-    
-                
+                <br>                
 
               </div>
             </div>   
@@ -218,11 +244,12 @@
               <div class="footer-text text-center">
         
                 <div class="footer-text text-center">
-                  <a href="index.html">Infographics</a> |
-                  <a href="quiz.html"> Quizzes</a> |
+                  <a href="index.html">Infographics |</a>
+                  <a href="quiz.html"> Quizzes |</a>
                   <a href="answer.html"> Answer Keys</a>
                 
                 </div>
+
                 <p>© 2019 by Amy Debbané</p>
               </div>
             </div>
